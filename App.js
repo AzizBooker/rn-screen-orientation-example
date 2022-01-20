@@ -5,7 +5,7 @@ import * as ScreenOrientation from 'expo-screen-orientation'
 
 export default function App() {
   const [orientationIsLandscape,setOrientation]=useState(true)
-
+/*
   async function changeScreenOrientation(){
 
     if(orientationIsLandscape==true){
@@ -19,10 +19,11 @@ export default function App() {
     setOrientation(!orientationIsLandscape)
     changeScreenOrientation()
   }
+  */
   return (
     <View style={styles.container}>
-      <Text>Screen Orientaion</Text>
-      <Button title="Change Orientation" onPress={toggleOrientation} />
+      <Text >Screen Orientation</Text>
+      <Button title="Change Orientation"  />
       <StatusBar style="none"/>
     </View>
   );
@@ -35,4 +36,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
