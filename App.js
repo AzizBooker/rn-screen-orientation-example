@@ -1,11 +1,29 @@
+import {useState} from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Button } from 'react-native';
+import * as ScreenOrientation from 'expo-screen-orientation'
 
 export default function App() {
+  const [orientationIsLandscape,setOrientation]=useState(true)
+
+  async function changeScreenOrientation(){
+
+    if(orientationIsLandscape==true){
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+    }
+    else if(orientationIsLandscape==false){
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+    }
+  }
+  const toggleOrientation=()=>{
+    setOrientation(!orientationIsLandscape)
+    changeScreenOrientation()
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>Screen Orientaion</Text>
+      <Button title="Change Orientation" onPress={toggleOrientation} />
+      <StatusBar style="none"/>
     </View>
   );
 }
